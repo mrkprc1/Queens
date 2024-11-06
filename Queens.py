@@ -14,10 +14,10 @@ from utils import (
     plot_queens)
 
 # Load the image.
-img = cv.imread('QueensScreenshots/Screenshot 2024-11-06 at 08.31.05.png')
+img = cv.cvtColor(cv.imread('QueensScreenshots/Screenshot 2024-11-06 at 08.31.05.png'), cv.COLOR_BGR2RGB)
 
 # Find the game board and extract the colours.
-queens_array, cmap = find_queens_grid(img, debug=False)
+queens_array, cmap = find_queens_grid(img, debug=True)
 
 # Plot the game board.
 plt.imshow(img)

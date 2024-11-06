@@ -117,10 +117,11 @@ def test_approx_quadri(contour, threshold=0.01):
     else:
         return False
     
+
 def find_queens_grid(img, debug=False):
     # Threshold image and find contours.
-    img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-    ret, thresh = cv.threshold(img_gray, 150, 255, cv.THRESH_BINARY)
+    img_gray = cv.cvtColor(img, cv.COLOR_RGB2GRAY)
+    ret, thresh = cv.threshold(img_gray, 120, 255, cv.THRESH_BINARY)
     contours,hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
     # Get contours that are approximately quadrilateral, sorted by perimeter.
@@ -164,7 +165,7 @@ def find_queens_grid(img, debug=False):
     # Look for the cells of the game grid. These will be the quadrilaterals
     # that are closest to the area of the game grid divided by the number of 
     # cells, which must be a square number. 
-    tol = 0.25
+    tol = 0.3
     for i in range(4, 11):
         cell_area = cv.contourArea(game_grid) / i**2
         lb = cell_area*(1-tol)

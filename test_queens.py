@@ -17,7 +17,7 @@ from utils import (
 img_files = os.listdir('QueensScreenshots')
 for img_file in img_files:
     if img_file.endswith('.png'):
-        img = cv.imread('QueensScreenshots/' + img_file)
+        img = cv.cvtColor(cv.imread('QueensScreenshots/' + img_file), cv.COLOR_BGR2RGB)
 # img = cv.imread('QueensScreenshots/Screenshot 2024-11-06 at 08.31.05.png')
 
     # Find the game board and extract the colours.
