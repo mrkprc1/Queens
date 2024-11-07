@@ -80,3 +80,27 @@ To cover all blocks on the board, the elements $1,1,\overbrace{0,0,\dots, 0,0}^{
 n^2 - (n+2) + 1 -(n-2) = (n-1)^2
 ```
 
+Defining each of the $(n-1)^2$ vectors as ${\bf t}_1 :=[1,1,0,\dots,0,1,1,0,\dots,0]$ to ${\bf t}_{(n-1)^2} :=[0,\dots,0,1,1,0,\dots,0,1,1]$, we can combine these into the matrix 
+
+```math
+T = \begin{bmatrix}
+{\bf t}_1 \\
+\vdots \\
+{\bf t}_{(n-1)^2}
+\end{bmatrix}
+```
+
+giving the constraints
+
+```math
+T {\bf x} \leq {\bf 1}_{(n-1)^2} \\
+T {\bf x} \geq {\bf 0}_{(n-1)^2}
+```
+
+Finally, to add a constraint for each region, we need to express each region as a set of indices of each cell of a region in the $n^2$ basis of ${\bf x}$, i.e. region $i$ is
+
+```math
+r_i := \{ r_{i,1}, r_{i,2} \dots r_{i,m} \}
+```
+
+where $r_{i,j} \in \{1, 2, \dots, n^2\}$. 
