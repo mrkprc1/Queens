@@ -167,6 +167,7 @@ def find_queens_grid(img, debug=False):
     # that are closest to the area of the game grid divided by the number of 
     # cells, which must be a square number. 
     tol = 0.3
+    cells = None
     for i in range(4, 11):
         cell_area = cv.contourArea(game_grid) / i**2
         lb = cell_area*(1-tol)
@@ -179,7 +180,7 @@ def find_queens_grid(img, debug=False):
             break
 
     if cells is None:
-        print("Could not find the cells.")
+        return None, None
 
     if debug:
         plot_img_and_contours(cropped_img, [contour_points_to_lines(con) for con in cells], thickness=1)

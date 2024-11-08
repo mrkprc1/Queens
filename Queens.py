@@ -18,6 +18,10 @@ def run_queens_solver(img_path, debug=False):
     # Find the game board and extract the colours.
     queens_array, cmap = find_queens_grid(img, debug=debug)
 
+    # If the game board was not found, return a "no Queens Game found image".
+    if queens_array is None:
+        return cv.imread('NoQueens.png')
+
     # Solve the game.
     queens_solved = solve_queens(queens_array, cmap)
     
@@ -27,7 +31,7 @@ def run_queens_solver(img_path, debug=False):
 demo = gr.Interface(
     fn=run_queens_solver,
     inputs=gr.Image(type='filepath', label="Image of the Queens game board"),
-    outputs=gr.Image(label="Solved Queens game board")
+    outputs=gr.Image()
 )
 
 demo.launch(share=False)
