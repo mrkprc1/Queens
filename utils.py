@@ -255,6 +255,28 @@ def plot_queens(numbered_array, cmap, queens=None):
 
     plt.show()
 
+def plot_queens_to_img(numbered_array, cmap, queens=None):
+    # Load the Font Awesome font for the Moon and Sun symbols.
+    prop = FontProperties(fname='Font Awesome 6 Free-Solid-900.otf')
+
+    fig, ax = plt.subplots(figsize=(5,5))
+    ax.matshow(numbered_array, cmap=cmap)
+    n = numbered_array.shape[0]
+    for i in range(n+1):
+        ax.axhline(y=i-0.5, color='black', linestyle='-', linewidth=2)
+        ax.axvline(x=i-0.5, color='black', linestyle='-', linewidth=2)
+    plt.axis('off')
+    if queens is not None:
+        for queen in queens:
+            ax.annotate('\uf521', [queen[1], queen[0]], color='black', ha='center', va='center', fontsize=20, fontproperties=prop)
+
+    fig.canvas.draw()
+    img = np.frombuffer(fig.canvas.tostring_rgb(), dtype=np.uint8)
+    img = img.reshape(fig.canvas.get_width_height()[::-1] + (3,))
+    plt.close(fig)
+
+    return img
+
 def solve_queens(queens_array, cmap):
     # Define the optimsation problem.
     n = queens_array.shape[0]

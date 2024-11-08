@@ -13,6 +13,7 @@ scikit-image = "^0.24.0"
 scipy = "^1.14.1"
 matplotlib = "^3.9.2"
 pytest = "^8.3.3"
+gradio = "^5.5.0"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.5"
